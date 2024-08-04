@@ -1,4 +1,18 @@
 ## 백준 문제 풀이
+### 사용언어
+- `Python3 & C++`
+
+### Python
+- `Black Formatter` & `Isort` 사용
+
+### README 섹션
+- 문제
+- 해결 방법
+- 의사코드
+- URL
+
+### 문제 URL
+- `https://www.acmicpc.net/problem/{문제번호}`
 
 ## 백준 프로필
 
