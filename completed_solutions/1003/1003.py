@@ -12,7 +12,7 @@ def get_inputs():
 
 def solution(n):
     """
-    0이 호출되는 횟수, 1이 호출되는 횟수
+    [0이 호출되는 횟수, 1이 호출되는 횟수]
     """
     if n == 0:
         return "1 0"
