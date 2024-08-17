@@ -21,8 +21,7 @@ def solution():
     value_table = [0] * (max_weight + 1)
 
     for i in range(item_count):
-        weight = data[i][0]
-        value = data[i][1]
+        weight, value = data[i]
 
         if weight > max_weight:
             continue
@@ -36,21 +35,8 @@ def solution():
                     value_table[looping_weight + weight],
                     value_table[looping_weight] + value,
                 )
+
         value_table[weight] = max(value_table[weight], value)
-
-        # if weight <= max_weight:
-        #     value_table[weight] = max(value_table[weight], value)
-
-        # for j in range(max_weight + 1):
-        #     if value_table[j] == 0:
-        #         continue
-
-        #     if j + weight > max_weight:
-        #         break
-
-        #     value_table[j + weight] = max(
-        #         value_table[j + weight], value_table[j] + value
-        #     )
 
     return max(value_table)
 
