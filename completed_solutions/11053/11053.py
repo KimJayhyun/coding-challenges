@@ -19,14 +19,14 @@ def solution():
     for idx, item in enumerate(data):
         length = idx + 1
 
-        temp = 0
+        max_temp = 0
         for i in range(length - 1, -1, -1):
             if item_table[i] >= item:
                 continue
             else:
-                temp = max(temp, length_table[i] + 1)
+                max_temp = max(max_temp, length_table[i] + 1)
 
-            length_table[length] = temp
+            length_table[length] = max_temp
 
     return max(length_table)
 
