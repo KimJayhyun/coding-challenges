@@ -4,27 +4,53 @@ def get_inputs():
     input_data = sys.stdin.read()
     inputs = input_data.splitlines()
 
-    str_to_int_arr = lambda x: list(map(int, x.split()))
+    max_row, max_col = map(int, inputs[0].split())
+    data = list(map(list, inputs[1:]))
 
-    node_count, edge_count, start_node = map(int, inputs[0].split())
-    data = list(map(str_to_int_arr, inputs[1:]))
-
-    return node_count, edge_count, start_node, data
+    return max_row, max_col, data
 
 
 def solution():
-    node_count, edge_count, start_node, data = get_inputs()
+    max_row, max_col, data = get_inputs()
 
-    dfs = []
-    bfs = []
+    dfs = [(0, 0)]
+    count = 0
 
-    current_node = start_node
+    while True:
+        current_position = dfs[-1]
+        print(current_position)
+        if current_position == (max_row - 1, max_col - 1):
+            break
+        current_row, current_col = current_position
 
-    for idx in range(edge_count):
-        next_node = 0
+        count += 1
 
-        if current_node in data[idx]:
-            pass
+        # 아래로 이동
+        if current_row + 1 < max_row:
+            if data[current_row + 1][current_col] == "1":
+                print("아래")
+                dfs.append((current_row + 1, current_col))
+                continue
+
+        # 오른쪽으로 이동
+        if current_col + 1 < max_col:
+            if data[current_row][current_col + 1] == "1":
+                dfs.append((current_row, current_col + 1))
+                continue
+
+        # 위로 이동
+        if current_row - 1 >= 0:
+            if data[current_row - 1][current_col] == "1":
+                dfs.append((current_row - 1, current_col))
+                continue
+
+        # 왼쪽으로 이동
+        if current_col - 1 >= 0:
+            if data[current_row][current_col - 1] == "1":
+                dfs.append((current_row, current_col - 1))
+                continue
+
+        dfs.pop()
 
 
 def main():
