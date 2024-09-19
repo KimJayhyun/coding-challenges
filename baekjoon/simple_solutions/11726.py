@@ -8,13 +8,12 @@ def get_inputs():
 def solution():
     n = get_inputs()
 
-    count_list = []
+    if n == 1:
+        return 1  # 2 x 1
+    elif n == 2:
+        return 2  # 2 x 2
 
-    # 2 x 1
-    count_list.append(1)
-
-    # 2 x 2
-    count_list.append(2)
+    count_list = [1, 2]
 
     for i in range(2, n + 1):
         ## Time 40 ms
