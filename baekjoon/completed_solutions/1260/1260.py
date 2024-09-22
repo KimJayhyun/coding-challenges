@@ -29,7 +29,7 @@ def solution():
     for key in adjacency_list:
         adjacency_list[key].sort()
 
-    ## dfs : Queue
+    ## dfs : Stack
     def dfs(start):
         dfs = []
         visited = [False] * (node_count + 1)
