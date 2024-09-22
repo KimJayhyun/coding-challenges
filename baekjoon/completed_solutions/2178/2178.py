@@ -13,60 +13,36 @@ def get_inputs():
 def solution():
     max_row, max_col, data = get_inputs()
 
-    dfs = [(0, 0)]
-    visited = []
+    visited = [[0] * (max_col) for _ in range(max_row)]
+    count_table = [[1] * (max_col) for _ in range(max_row)]
 
-    count = 0
+    need_visited = [(0, 0)]
 
-    while True:
-        current_position = dfs.pop()
-        visited.append(current_position)
+    while need_visited:
+        current_row, current_col = need_visited.pop(0)
 
-        if current_position == (max_row - 1, max_col - 1):
+        if current_row == max_row - 1 and current_col == max_col - 1:
             break
-        current_row, current_col = current_position
 
-        count += 1
+        if visited[current_row][current_col] == 0:
+            visited[current_row][current_col] = 1
 
-        # 오른쪽으로 이동
-        if current_col + 1 < max_col:
-            if (
-                data[current_row][current_col + 1] == "1"
-                and (current_row, current_col + 1) not in visited
-            ):
-                dfs.append((current_row, current_col + 1))
-                continue
+            for row, col in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+                next_row = current_row + row
+                next_col = current_col + col
 
-        # 아래로 이동
-        if current_row + 1 < max_row:
-            if (
-                data[current_row + 1][current_col] == "1"
-                and (current_row + 1, current_col) not in visited
-            ):
-                dfs.append((current_row + 1, current_col))
-                continue
+                if (
+                    0 <= next_row < max_row
+                    and 0 <= next_col < max_col
+                    and data[next_row][next_col] == "1"
+                    and visited[next_row][next_col] == 0
+                ):
+                    need_visited.append((next_row, next_col))
+                    count_table[next_row][next_col] = (
+                        count_table[current_row][current_col] + 1
+                    )
 
-        # 위로 이동
-        if current_row - 1 >= 0:
-            if (
-                data[current_row - 1][current_col] == "1"
-                and (current_row - 1, current_col) not in visited
-            ):
-                dfs.append((current_row - 1, current_col))
-                continue
-
-        # 왼쪽으로 이동
-        if current_col - 1 >= 0:
-            if (
-                data[current_row][current_col - 1] == "1"
-                and (current_row, current_col - 1) not in visited
-            ):
-                dfs.append((current_row, current_col - 1))
-                continue
-
-        visited.pop()
-
-    return len(visited)
+    return count_table[max_row - 1][max_col - 1]
 
 
 def main():
