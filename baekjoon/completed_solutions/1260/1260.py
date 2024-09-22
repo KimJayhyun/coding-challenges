@@ -4,8 +4,11 @@ def get_inputs():
     input_data = sys.stdin.read()
     inputs = input_data.splitlines()
 
-    node_count, edge_count, start = inputs[0].split()
-    data = list(map(lambda x: x.split(), inputs[1:]))
+    node_count, edge_count, start = map(int, inputs[0].split())
+
+    str_to_int_arr = lambda x: list(map(int, x.split()))
+
+    data = list(map(str_to_int_arr, inputs[1:]))
 
     return node_count, edge_count, start, data
 
@@ -13,44 +16,57 @@ def get_inputs():
 def solution():
     from collections import defaultdict
 
-    _, _, start, data = get_inputs()
+    node_count, _, start, data = get_inputs()
 
-    graph = defaultdict(list)
+    ## 인접 리스트 생성
+    adjacency_list = defaultdict(list)
 
     for edge in data:
-        graph[edge[0]].append(edge[1])
+        adjacency_list[edge[0]].append(edge[1])
+        adjacency_list[edge[1]].append(edge[0])
 
-    for key in graph:
-        graph[key].sort()
+    ## 인접 리스트 정렬
+    for key in adjacency_list:
+        adjacency_list[key].sort()
 
+    ## dfs : Queue
     def dfs(start):
-        visited = []
+        dfs = []
+        visited = [False] * (node_count + 1)
         need_visited = [start]
 
         while need_visited:
             node = need_visited.pop()
 
-            if node not in visited:
-                visited.append(node)
-                need_visited.extend(graph[node][::-1])
+            if not visited[node]:
+                dfs.append(node)
+                visited[node] = True
 
-        return visited
+                for next_node in adjacency_list[node][::-1]:
+                    need_visited.append(next_node)
 
+        return dfs
+
+    ## bfs : Queue
     def bfs(start):
-        visited = []
+        bfs = []
+        visited = [False] * (node_count + 1)
         need_visited = [start]
 
         while need_visited:
             node = need_visited.pop(0)
 
-            if node not in visited:
-                visited.append(node)
-                need_visited.extend(graph[node])
+            if not visited[node]:
+                bfs.append(node)
+                visited[node] = True
 
-        return visited
+                for next_node in adjacency_list[node]:
+                    need_visited.append(next_node)
 
-    print(" ".join(dfs(start)))
-    print(" ".join(bfs(start)))
+        return bfs
+
+    print(" ".join(map(str, dfs(start))))
+    print(" ".join(map(str, bfs(start))))
 
 
 def main():
