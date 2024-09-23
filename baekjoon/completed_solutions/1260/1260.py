@@ -26,7 +26,7 @@ def solution():
         adjacency_list[edge[1]].append(edge[0])
 
     ## 인접 리스트 정렬
-    for key in adjacency_list:
+    for key in adjacency_list.keys():
         adjacency_list[key].sort()
 
     ## dfs : Stack
