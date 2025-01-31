@@ -28,6 +28,42 @@
 
 
 ### 해결 방법
+#### 1. 동적 프로그래밍
+> O(n^2)
+
+동적 프로그래밍를 활용하여 해결할 수 있다.
+
+`length_table`을 만들어서 모든 배열의 수를 확인하여 아래와 같이 해결할 수 있다.
+
+```python
+def solution():
+    # 주어진 array와 length
+    item_count, data = get_inputs()
+
+    # 가장 긴 증가하는 부분 수열의 길이를 저장할 배열
+    length_table = [1] * item_count
+
+    for i in range(1, item_count):
+        for j in range(i):
+            # 각 데이터에 대해 이전 데이터가 작을 경우
+            if data[j] < data[i]:
+                ## 아래보다 큰 것을 선택한다.
+                # 1. 이전 위치의 가장 긴 부분 수열의 길이 + 1
+                # 2. j에 대해 현재까지 계산한 가장 긴 부분 수열의 길이
+                length_table[i] = max(length_table[i], length_table[j] + 1)
+
+    return max(length_table)
+
+```
+
+#### 2. 이진 탐색
+
+주어진 문제는 `LIS(Longest Increasing Subsequence)`에 대한 것이다.
+
+`LIS` 문제는 동적 프로그래밍으로 해결 가능하지만,
+
+이진 탐색을 활용해서 `O(n log n)`까지 최적화를 할 수 있다고 한다.
+
 
 ### 의사 코드
 ```text
