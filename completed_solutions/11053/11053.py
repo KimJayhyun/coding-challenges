@@ -10,26 +10,14 @@ def get_inputs():
 def solution():
     item_count, data = get_inputs()
 
-    if item_count == 1:
-        return 1
+    length_table = [1] * item_count
 
-    item_table = [0] + data
-    length_table = [0] * (item_count + 1)
-
-    for idx, item in enumerate(data):
-        length = idx + 1
-
-        max_temp = 0
-        for i in range(length - 1, -1, -1):
-            if item_table[i] >= item:
-                continue
-            else:
-                max_temp = max(max_temp, length_table[i] + 1)
-
-            length_table[length] = max_temp
+    for i in range(1, item_count):
+        for j in range(i):
+            if data[j] < data[i]:
+                length_table[i] = max(length_table[i], length_table[j] + 1)
 
     return max(length_table)
-
 
 def main():
     print(solution(), end="")
