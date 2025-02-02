@@ -1,48 +1,33 @@
-def get_inputs():
+def solution():
+    import heapq
     import sys
 
-    input_data = sys.stdin.read()
-    inputs = input_data.splitlines()
+    number_of_item = int(sys.stdin.readline())
 
-    item_count = int(inputs[0])
-    data = list(map(int, inputs[1:]))
+    left_max_heap = []
+    right_min_heap = []
 
-    return item_count, data
+    for _ in range(number_of_item):
+        item = int(sys.stdin.readline())
 
-
-def find_index_with_binary_search(arr, target):
-    if not arr:
-        return 0
-
-    left = 0
-    right = len(arr) - 1
-
-    while left <= right:
-        mid = left + (right - left) // 2
-
-        if arr[mid] == target:
-            return mid
-
-        if arr[mid] > target:
-            right = mid - 1
+        if len(left_max_heap) == len(right_min_heap):
+            heapq.heappush(left_max_heap, -item)
         else:
-            left = mid + 1
+            heapq.heappush(right_min_heap, item)
 
-    return left
+        if right_min_heap and right_min_heap[0] < -left_max_heap[0]:
+            right = heapq.heappop(right_min_heap)
+            left = heapq.heappop(left_max_heap)
+
+            heapq.heappush(left_max_heap, -right)
+            heapq.heappush(right_min_heap, -left)
+
+        # print(f"answer: {-left_max_heap[0]}")
+        print(-left_max_heap[0])
 
 
 def main():
-    _, data = get_inputs()
-
-    arr = []
-
-    for idx, item in enumerate(data):
-        insert_pos = find_index_with_binary_search(arr, item)
-
-        arr.insert(insert_pos, item)
-
-        left_mid_index = int(idx // 2)
-        print(arr[left_mid_index])
+    solution()
 
 
 if __name__ == "__main__":
