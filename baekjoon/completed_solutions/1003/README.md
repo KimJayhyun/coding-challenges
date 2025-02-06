@@ -87,4 +87,4 @@ N이 주어졌을 때, fibonacci(N)을 호출했을 때, 0과 1이 각각 몇 �
    - 반환되는 문자열은 공백으로 구분된 0과 1의 호출 횟수임.
 
 ### URL
-- [터렛](https://www.acmicpc.net/problem/1003)
+- [피보나치 함수](https://www.acmicpc.net/problem/1003)
