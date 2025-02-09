@@ -16,3 +16,4 @@
 ## 분할 정복
 - [[백준] # 1629: 곱셈](https://www.acmicpc.net/problem/1629)
 - [[백준] # 11401: 이항 계수 3](https://www.acmicpc.net/problem/11401)
+- [[백준] # 10830: 행렬 제곱](https://www.acmicpc.net/problem/10830)
