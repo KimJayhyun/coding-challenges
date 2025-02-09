@@ -16,23 +16,23 @@ class Solution:
         return max_profit
 
 
-class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
-        pre_sum = [0 for _ in range(len(prices))]
+# class Solution:
+#     def maxProfit(self, prices: List[int]) -> int:
+#         pre_sum = [0 for _ in range(len(prices))]
 
-        for idx in range(1, len(prices)):
-            pre_sum[idx] = prices[idx] - prices[idx - 1]
+#         for idx in range(1, len(prices)):
+#             pre_sum[idx] = prices[idx] - prices[idx - 1]
 
-        max_profit = float("-inf")
-        current_profit = 0
-        for num in pre_sum:
-            current_profit += num
-            max_profit = max(max_profit, current_profit)
+#         max_profit = float("-inf")
+#         current_profit = 0
+#         for num in pre_sum:
+#             current_profit += num
+#             max_profit = max(max_profit, current_profit)
 
-            if current_profit < 0:
-                current_profit = 0
+#             if current_profit < 0:
+#                 current_profit = 0
 
-        return max_profit
+#         return max_profit
 
 
 solution = Solution()
