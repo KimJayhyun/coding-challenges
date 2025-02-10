@@ -11,13 +11,17 @@ def kadane_with_subarray(arr):
 
     for i, num in enumerate(arr):
         current_sum += num
+        if num > current_sum:
+            current_sum = num
+            s = i
+
         if current_sum > max_sum:
             max_sum = current_sum
             start, end = s, i  # 최댓값이 갱신될 때마다 시작, 끝 인덱스 갱신
 
-        if current_sum < 0:
-            current_sum = 0
-            s = i + 1  # 새로운 부분합을 시작할 위치 저장
+        # if current_sum < 0:
+        #     current_sum = 0
+        #     s = i + 1  # 새로운 부분합을 시작할 위치 저장
 
     return max_sum, arr[start : end + 1]
 
