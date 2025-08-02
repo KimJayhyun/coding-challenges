@@ -23,6 +23,9 @@
 - [[백준] # 11401: 이항 계수 3](https://www.acmicpc.net/problem/11401)
 - [[백준] # 10830: 행렬 제곱](https://www.acmicpc.net/problem/10830)
 
-## 자료구조
+# 자료구조
 
-- [Linked List 뒤집기](./udemy/Python%20Data%20Structures%20&%20Algorithms/01.Linked_List.ipynb)
+## Linked List
+
+- [Reverse Linked List](./udemy/Python%20Data%20Structures%20&%20Algorithms/01.Linked_List.ipynb)
+- [Finde Middle Node](./udemy/Python%20Data%20Structures%20&%20Algorithms/01.Linked%20List/02.find_middle.node.py)
