@@ -27,5 +27,22 @@
 
 ## Linked List
 
-- [Reverse Linked List](./udemy/Python%20Data%20Structures%20&%20Algorithms/01.Linked_List.ipynb)
-- [Finde Middle Node](./udemy/Python%20Data%20Structures%20&%20Algorithms/01.Linked%20List/02.find_middle.node.py)
+[README](./udemy/Python%20Data%20Structures%20&%20Algorithms/01.Linked%20List/README.md)에서 확인
+
+1. [Reverse Linked List](./udemy/Python%20Data%20Structures%20&%20Algorithms/01.Linked_List.ipynb)
+
+2. [Finde Middle Node](./udemy/Python%20Data%20Structures%20&%20Algorithms/01.Linked%20List/02.find_middle.node.py)
+
+3. [Has loop](./udemy/Python%20Data%20Structures%20&%20Algorithms/01.Linked%20List/03.has_loop.py)
+
+4. [Find k th node](./udemy/Python%20Data%20Structures%20&%20Algorithms/01.Linked%20List/04.find_k-th_node.py)
+
+5. [Remove duplicates](./udemy/Python%20Data%20Structures%20&%20Algorithms/01.Linked%20List/05.remove_duplicates.py)
+
+6. [Binary to decimal](./udemy/Python%20Data%20Structures%20&%20Algorithms/01.Linked%20List/06.binary_to_decimal.py)
+
+7. [Partition list](./udemy/Python%20Data%20Structures%20&%20Algorithms/01.Linked%20List/07.partition_list.py)
+
+8. [Reverse between](./udemy/Python%20Data%20Structures%20&%20Algorithms/01.Linked%20List/08.reverse_between.py)
+
+9. [Swap nodes in pairs](./udemy/Python%20Data%20Structures%20&%20Algorithms/01.Linked%20List/09.swap_nodes_in_pairs.py)
