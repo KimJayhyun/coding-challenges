@@ -45,4 +45,6 @@
 
 8. [Reverse between](./udemy/Python%20Data%20Structures%20&%20Algorithms/01.Linked%20List/08.reverse_between.py)
 
+   - 다시 풀어보기
+
 9. [Swap nodes in pairs](./udemy/Python%20Data%20Structures%20&%20Algorithms/01.Linked%20List/09.swap_nodes_in_pairs.py)
