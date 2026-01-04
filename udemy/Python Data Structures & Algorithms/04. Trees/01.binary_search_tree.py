@@ -35,6 +35,24 @@ class BinarySearchTree:
             else:
                 return False
 
+    def contains(self, value):
+        # if self.root is None:
+        if not self.root:
+            return False
+
+        current = self.root
+
+        # while current is not None:
+        while current:
+            if current.value > value:
+                current = current.left
+            elif current.value < value:
+                current = current.right
+            else:
+                return True
+        else:
+            return False
+
 
 my_tree = BinarySearchTree()
 
@@ -73,5 +91,33 @@ print("Root->Right:", my_tree.root.right.value)
     Root: 2
     Root->Left: 1
     Root->Right: 3
+
+"""
+
+
+my_tree = BinarySearchTree()
+my_tree.insert(47)
+my_tree.insert(21)
+my_tree.insert(76)
+my_tree.insert(18)
+my_tree.insert(27)
+my_tree.insert(52)
+my_tree.insert(82)
+
+print("BST Contains 27:")
+print(my_tree.contains(27))
+
+print("\nBST Contains 17:")
+print(my_tree.contains(17))
+
+
+"""
+    EXPECTED OUTPUT:
+    ----------------
+    BST Contains 27:
+    True
+
+    BST Contains 17:
+    False
 
 """
