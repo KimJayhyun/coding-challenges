@@ -45,41 +45,66 @@ class BinarySearchTree:
         self.root = self.__sorted_list_to_bst(nums, 0, len(nums) - 1)
 
     def __sorted_list_to_bst(self, nums, left, right):
+        if left > right:  # 베이스 케이스
+            return None
+
+        mid = (left + right) // 2  # 실제 중간 인덱스
+
+        node = Node(nums[mid])
+        node.left = self.__sorted_list_to_bst(nums, left, mid - 1)
+        node.right = self.__sorted_list_to_bst(nums, mid + 1, right)
+
+        return node
+
+
+"""
         if len(nums) == 0:
             return None
 
         temp = int((right - left) / 2)
 
         node = Node(nums[temp])
+
+        ## 리스트 슬라이싱
+        슬라이싱은 O(k)
+
+        시간 복잡도 계산:
+            레벨 0: n개 복사
+            레벨 1: n/2 + n/2 = n개 복사
+            레벨 2: n/4 + n/4 + n/4 + n/4 = n개 복사
+            ...
+            총 log n 레벨
+
         node.left = self.__sorted_list_to_bst(nums[:temp], left, temp)
         node.right = self.__sorted_list_to_bst(nums[temp + 1 :], 0, temp)
 
         return node
-        #   +====================================================+
-        #   |               WRITE YOUR CODE HERE                 |
-        #   | Description:                                       |
-        #   | - Private method to convert a sorted list to a     |
-        #   |   binary search tree (BST).                        |
-        #   | - The method uses the middle element of the list   |
-        #   |   as the root to ensure balanced height.           |
-        #   |                                                    |
-        #   | Parameters:                                        |
-        #   | - nums: Sorted list of integers.                   |
-        #   | - left: Starting index of the list segment.        |
-        #   | - right: Ending index of the list segment.         |
-        #   |                                                    |
-        #   | Return:                                            |
-        #   | - The root node of the BST created from the        |
-        #   |   specified list segment.                          |
-        #   |                                                    |
-        #   | Tips:                                              |
-        #   | - The function is recursively called to construct  |
-        #   |   the left and right subtrees.                     |
-        #   | - A new Node is created at each recursive call     |
-        #   |   with the mid element of the current list segment |
-        #   |   as its value, ensuring the BST property is       |
-        #   |   maintained.                                      |
-        #   +====================================================+
+"""
+#   +====================================================+
+#   |               WRITE YOUR CODE HERE                 |
+#   | Description:                                       |
+#   | - Private method to convert a sorted list to a     |
+#   |   binary search tree (BST).                        |
+#   | - The method uses the middle element of the list   |
+#   |   as the root to ensure balanced height.           |
+#   |                                                    |
+#   | Parameters:                                        |
+#   | - nums: Sorted list of integers.                   |
+#   | - left: Starting index of the list segment.        |
+#   | - right: Ending index of the list segment.         |
+#   |                                                    |
+#   | Return:                                            |
+#   | - The root node of the BST created from the        |
+#   |   specified list segment.                          |
+#   |                                                    |
+#   | Tips:                                              |
+#   | - The function is recursively called to construct  |
+#   |   the left and right subtrees.                     |
+#   | - A new Node is created at each recursive call     |
+#   |   with the mid element of the current list segment |
+#   |   as its value, ensuring the BST property is       |
+#   |   maintained.                                      |
+#   +====================================================+
 
 
 #  +====================================================+
