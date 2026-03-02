@@ -78,6 +78,38 @@ heapq.nsmallest(2, heap)
 
 ---
 
+## heapify 주의사항 — 원본 리스트 변경됨
+
+`heapify`는 리스트를 **in-place(제자리)로 변환**하기 때문에 원본이 바뀐다.
+원본을 유지하려면 복사 후 사용해야 한다.
+
+```python
+priorities = [3, 1, 4, 1, 5]
+
+# ❌ 원본이 변경됨
+heapq.heapify(priorities)
+
+# ✅ 방법 1: 복사 후 heapify (권장, O(N))
+heap = priorities[:]
+heapq.heapify(heap)
+
+# ✅ 방법 2: list()로 복사
+heap = list(priorities)
+heapq.heapify(heap)
+
+# ✅ 방법 3: heappush로 새로 쌓기 (O(N log N), 느림)
+heap = []
+for p in priorities:
+    heapq.heappush(heap, p)
+```
+
+> **성능 비교**
+>
+> - `heapify` : O(N) → 복사 후 heapify가 가장 효율적
+> - `heappush` 반복 : O(N log N)
+
+---
+
 ## 인덱스 구조
 
 | 노드        | 인덱스         |
