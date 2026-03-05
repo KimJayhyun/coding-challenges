@@ -13,4 +13,13 @@ next(gen)  # 2
 next(gen)  # 1
 ```
 
+**직접 구현하면:**
+
+```python
+def my_cycle(iterable):
+    while True:
+        for x in iterable:
+            yield x
+```
+
 **주의:** 무한 루프이므로 `islice` 또는 `break` 없이 `list()`로 변환하면 안 됨 ⚠️
